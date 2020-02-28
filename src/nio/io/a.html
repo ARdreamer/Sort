@@ -1,0 +1,741 @@
+<!DOCTYPE html><html class="pixel-ratio-1"><head><meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+
+    <title>WECHAT_EMPTY_TITLE</title>
+    <!-- head 中 -->
+    <script src="http://tp.hotjob.cn/wt/javascript/mobweb/jquery-1.8.2.min.js?vn=1564573490482" type="text/javascript"></script><style id="__WXWORK_INNER_SCROLLBAR_CSS">::-webkit-scrollbar { width: 12px !important; height: 12px !important; }::-webkit-scrollbar-track:vertical {  }::-webkit-scrollbar-thumb:vertical { background-color: rgba(136, 141, 152, 0.5) !important; border-radius: 10px !important; background-clip: content-box !important; border:2px solid transparent !important; } ::-webkit-scrollbar-track:horizontal {  }::-webkit-scrollbar-thumb:horizontal { background-color: rgba(136, 141, 152, 0.5) !important; border-radius: 10px !important; background-clip: content-box !important; border:2px solid transparent !important; } ::-webkit-resizer { display: none !important; }</style>
+    <script type="text/javascript" src="http://tp.hotjob.cn/wt/javascript/jquery/waypoints.js?vn=1564573490482"></script>
+    <script src="http://tp.hotjob.cn/wt/v9/static/javascript/mobweb/jquery-weui.min.js?vn=1564573490482"></script>
+    <link rel="stylesheet" href="http://tp.hotjob.cn/wt/v9/static/styles/mobweb/common.css?vn=1564573490482">
+    <link rel="stylesheet" href="http://tp.hotjob.cn/wt/v9/static/styles/mobweb/weui.min.css?vn=1564573490482">
+    <link rel="stylesheet" href="http://tp.hotjob.cn/wt/v9/static/styles/mobweb/jquery-weui.min.css?vn=1564573490482">
+    <link rel="stylesheet" href="http://tp.hotjob.cn/wt/v9/static/styles/mobweb/bottmoMenu.css?vn=1564573490482">
+    <style type="text/css">
+        .main {
+            width: 100%;
+        }
+
+        .main li {
+            background-color: white;
+            margin: .4rem;
+            border-radius: 6px;
+            padding: .8rem .8rem;
+            position: relative;
+        }
+
+        .main li h3 {
+            font-size: 14px;
+            color: #333;
+            font-weight: 100;
+        }
+
+        .main li p {
+            font-size: 12px;
+            color: #777;
+        }
+
+        .see {
+            font-size: 12px;
+            width: 2.5rem;
+            height: .8rem;
+            color: white;
+            text-align: center;
+            line-height: .8rem;
+            border-radius: 1rem;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: .5rem;
+            margin-top: -0.2rem;
+        }
+
+        .haveSee {
+            background-color: #FFB639;
+        }
+
+        .notSee {
+            background-color: #C1C1C1;
+        }
+
+        .recrument {
+            background-color: #1fd4bb;
+        }
+
+        .time {
+            margin-left: .5rem;
+        }
+
+        .delivery-success {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: url("http://tp.hotjob.cn/wt/v9/static/images/mobweb/icon.png") 0 -400px no-repeat;
+            position: absolute;
+            right: 5%;
+            top: 52%;
+            margin-top: -30px;
+        }
+
+        .delivery-success1 {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: url("http://tp.hotjob.cn/wt/v9/static/images/mobweb/icon.png") 0 -400px no-repeat;
+            position: absolute;
+            right: 5%;
+            top: 62%;
+            margin-top: -30px;
+        }
+
+        .delivery-error {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: url("http://tp.hotjob.cn/wt/v9/static/images/mobweb/icon.png") -60px -400px no-repeat;
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            margin-top: -30px;
+        }
+
+        .quick-resume {
+            width: 35px;
+            height: 35px;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url("http://tp.hotjob.cn/wt/v9/static/images/mobweb/icon.png") 0 -100px no-repeat;
+        }
+
+        .icon-perfect {
+            width: 56px;
+            height: 20px;
+            display: inline-block;
+            position: absolute;
+            right: 5%;
+            top: 0;
+            background: url("http://tp.hotjob.cn/wt/v9/static/images/mobweb/icon.png") -35px -100px no-repeat;
+        }
+
+        .jiantou {
+            width: 15px;
+            height: 13px;
+            display: inline-block;
+            position: absolute;
+            right: 4px;
+            top: 103px;
+            background: url("http://tp.hotjob.cn/wt/v9/static/images/mobweb/icon.png") -55px -147px no-repeat;
+        }
+
+        .chehui {
+            position: absolute;
+            top: 13%;
+            right: 5%;
+            width: 52px;
+            height: 15px;
+            display: block;
+            text-align: center;
+            line-height: 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            border: 1px solid #ccc;
+        }
+
+        .active {
+            border: 1px solid #fa6d28;
+            color: #fa6d28
+        }
+        .weui-dialog.weui-dialog--visible{
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+<form id="cancelForm" name="cancelForm" method="post">
+    <input type="hidden" id="cancelApplyId" name="cancelApplyId" value="" class="clz_cancel_info">
+    <input type="hidden" id="cancelApplyReason" name="cancelApplyReason" value="" class="clz_cancel_info">
+</form>
+<ul class="main">
+
+    <li>
+
+
+
+
+        <span class="delivery delivery-success"></span>
+
+        <h3 style="min-height: 30px;">
+            <span onclick="toDetailPostUrl(125501,1,1)" style="cursor: pointer;">Java开发工程师-校招</span>
+
+
+
+
+
+            <span class="see notSee">未查看</span>
+
+
+
+            <span class="see recrument">
+
+						校园招聘
+
+
+
+
+				</span>
+        </h3>
+        <p style="height: 26px;">用友集团</p>
+
+        <p style="height: 26px;">站点：北京</p>
+
+        <p style="height: 20px;">
+            2019-07-29
+
+
+
+
+            <span style="color: #fa6d28;margin-left: .5rem;">待处理</span>
+
+
+
+        </p>
+
+
+    </li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    (typeof baseContextPath=="undefined")  &&(baseContextPath = "/wt")
+    // è§£å³å¤ä¸ªå¼¹çªç»ä»¶ zindex ç¸äºå²çªçé®é¢
+    var commonDialogIndex = 1024;
+    var getCommonDialogIndex = function () {
+        commonDialogIndex++;
+        return commonDialogIndex;
+    }
+</script>
+
+
+<style>
+    /* 添加联系hr图标样式 */
+    .linkHR{
+        position:fixed;
+        bottom: 126px;
+        left: 83%;
+        width:42px;
+        height:42px;
+        border-radius:100%;
+        border:1px solid rgba(208,208,208,0.8);
+        background-color:rgba(126,133,142,0.8);
+        z-index: 100;
+    }
+    .linkHR.newMag:after{
+        content:"";
+        display:block;
+        width:0;
+        height:0;
+        border:3px solid #ff6f36;
+        border-radius:3px;
+        position:absolute;
+        top:.4rem;
+        right:.5rem;
+    }
+    .linkHR img{
+        position:absolute;
+        width:20px;
+        height:20px;
+        top:50%;
+        left:50%;
+        margin-top:-10px;
+        margin-left:-10px;
+    }
+    .linkHR .text{
+        position:absolute;
+        width:11rem;
+        padding:10px;
+        background-color:rgba(126,133,142,0.8);
+        border-radius:5px;
+        font-size:.7rem;
+        color:#fff;
+        bottom:3rem;
+    }
+    .linkHR .text:after{
+        content:"";
+        position:absolute;
+        display:block;
+        width:0;
+        height:0;
+        border:8px solid transparent;
+        border-top-color:rgba(126,133,142,0.8);
+        left:16px;
+        bottom:-16px;
+    }
+    .linkHR .text .hrName{
+        color:#ffb637;
+    }
+
+    .linkHR .backtext{
+        position:absolute;
+        width:3rem;
+        padding:10px;
+        background-color:rgba(126,133,142,0.8);
+        border-radius:5px;
+        font-size:.7rem;
+        color:#fff;
+        bottom:3rem;
+    }
+    .linkHR .backtext:after{
+        content:"";
+        position:absolute;
+        display:block;
+        width:0;
+        height:0;
+        border:8px solid transparent;
+        border-top-color:rgba(126,133,142,0.8);
+        right:16px;
+        bottom:-16px;
+    }
+    .linkHR .backtext .hrName{
+        color:#ffb637;
+    }
+
+    .menuBtn{
+        display:none;
+        position:fixed;
+        bottom:4rem;
+        left: .5rem;
+        width:2.4rem;
+        height:2.4rem;
+        border-radius:100%;
+        border:1px solid rgba(208,208,208,0.8);
+        background-color:rgba(126,133,142,0.8);
+        z-index: 100;
+    }
+    .menuBtn img{
+        position:absolute;
+        width:1.1rem;
+        height:.7rem;
+        top:50%;
+        left:50%;
+        margin-top:-.35rem;
+        margin-left:-.55rem;
+    }
+    /*.linkHR.linkHR-right{
+        left:auto;
+        right:.5rem;
+    }*/
+    .linkHR.linkHR-right .text{
+        right: 0;
+    }
+    .linkHR.linkHR-right .text:after{
+        left:auto;
+        right:16px;
+    }
+    /* 添加联系hr图标样式end */
+</style>
+<div class="height90">
+</div>
+<div class="menu">
+    <img class="menuBack" src="http://tp.hotjob.cn/wt/v9/static/images/mobweb/menuBack.png">
+    <div class="weui-flex bottom">
+
+
+
+        <div class="weui-flex__item" id="choose3">
+
+
+            <a href="/wt/yonyou/mobweb/v8/security/candidates/listResume?brandCode=1&amp;request_locale=zh_CN" class="js_grid item3">
+
+                <div class="weui-grid__icon">
+                    <span></span>
+                </div>
+                <p class="weui-grid__label color99a1a9">
+                    我的简历
+                </p>
+            </a>
+        </div>
+
+
+        <div class="weui-flex__item" id="choose4">
+
+
+            <a href="/wt/yonyou/mobweb/v8/userCenter?brandCode=1&amp;request_locale=zh_CN" class="js_grid item4">
+
+                <div class="weui-grid__icon">
+                    <span></span>
+                </div>
+                <p class="weui-grid__label color99a1a9">
+                    个人中心
+                </p>
+            </a>
+        </div>
+
+        <div class="closed">
+            <div class="closed-nei">
+                <img class="xImg" src="http://tp.hotjob.cn/wt/v9/static/images/mobweb/x.png">
+            </div>
+        </div>
+    </div>
+</div>
+<!--  添加联系hr图标  -->
+
+<!--  添加联系hr图标end  -->
+<!--  添加ai机器图标  -->
+
+<!--  添加ai机器图标end  -->
+<div class="home">
+    <div class="home-nei">
+        <img class="homeImg" src="http://tp.hotjob.cn/wt/v9/static/images/mobweb/home1.png">
+    </div>
+</div>
+
+<script>
+    //	菜单展开，和关闭
+    $(".home").on("click",function(){
+        $(this).css("display","none");
+        $(".menu").css("display","block");
+        $(".height90").css("display","block");
+    });
+    $(".closed").on("click",function(){
+        $(".menu").css("display","none");
+        $(".height90").css("display","none");
+        $(".home").css("display","block");
+    });
+
+    var str =   '<style>.weui-dialog__hd{text-align: center;}.weui-dialog__title{font-weight: bold;font-size: 16px;color:#666;}.borderr .weui-cell__bd p {font-size:12px;color: #999;}.weui-dialog{width: 256px;left: 50%;margin-left: -128px;border-radius: 10px;top: 30%;}.weui-dialog__bd {padding: 0 .6em .8em;}'+
+        '.borderr {border-radius: 5px;overflow: auto;max-height:120px;min-height:40px;border: 1px solid #eee;}'+
+        '.nolborder {overflow: hidden;height: 1.9rem;border: 0;width: 44.2%;float: left;padding:10px 5px;margin:0;line-height: initial;}'+
+        '.nolborder .weui-cell__hd{width:1rem;}'+
+        '.borderBottom {border-bottom: 1px solid #eee;}'+
+        '.borderRight {border-right:1px solid #eee;padding-left: 8px;}'+
+        '.borderBottom:nth-last-of-type(2),.borderBottom:nth-last-of-type(1){border-bottom:0;}'+
+        '.borderBottom:nth-child(2),.borderBottom:nth-child(1){border-bottom:1px solid #eee!important;}'+
+        '.borderRight:nth-of-type(even){border-right:0;}'+
+        '.weui-dialog__ft{padding-bottom: 10px;text-align: center;display: block;}.weui-dialog__ft:after{border:0;}'+
+        '.weui-dialog .weui-dialog__ft .weui-dialog__btn{display: inline-block;width: 90px;height: 26px;line-height: 26px;border: 1px solid #ff6529;margin: 10px 20px 10px 10px;border-radius: 30px;font-size: 14px;background-color: #ff6529;color: #fff;}'+
+        '.weui-dialog .weui-dialog__ft .weui-dialog__btn.defaultP{border: 1px solid #d7d7d7;margin: 10px 10px 10px 20px;background-color: #ff6529;color: #6c6c6c;background-color: transparent;}'+
+        '.weui-dialog__btn:after {border-left: 0!important;}.weui-cell:after,.weui-cell:before{border:0;}'+
+        '.borderr .weui-cell__bd {text-align: center;}</style>'+
+        '<div class="borderr" id="templatType">'+
+        '<div class="weui-cells_checkbox">'+
+        //		'<div class="weui-flex__item">'+
+        //			'<div class="weui-cells weui-cells_checkbox">'+
+
+        '<label class="weui-cell weui-check__label nolborder borderRight borderBottom">'+
+        '<div class="weui-cell__hd">'+
+        '<input type="radio" name="checkbox1" class="weui-check"  value="2" />'+
+        '<i class="weui-icon-checked"></i>'+
+        '</div>'+
+        '<div class="weui-cell__bd">'+
+        '<p>社会招聘</p>'+
+        '</div>'+
+        '</label>'+
+
+        //			'</div>'+
+        //		'</div>'+
+        //		'<div class="weui-flex__item">'+
+        //			'<div class="weui-cells weui-cells_checkbox">'+
+
+        '<label class="weui-cell weui-check__label nolborder borderRight borderBottom">'+
+        '<div class="weui-cell__hd">'+
+        '<input type="radio" name="checkbox1" class="weui-check"  value="1" />'+
+        '<i class="weui-icon-checked"></i>'+
+        '</div>'+
+        '<div class="weui-cell__bd">'+
+        '<p>校园招聘</p>'+
+        '</div>'+
+        '</label>'+
+
+        //			'</div>'+
+        //		'</div>'+
+        //		'</div>'+
+        //		'<div class="weui-flex">'+
+        //		'<div class="weui-flex__item">'+
+        //			'<div class="weui-cells weui-cells_checkbox">'+
+
+        '<label class="weui-cell weui-check__label nolborder borderRight borderBottom">'+
+        '<div class="weui-cell__hd">'+
+        '<input type="radio" name="checkbox1" class="weui-check"  value="12" />'+
+        '<i class="weui-icon-checked"></i>'+
+        '</div>'+
+        '<div class="weui-cell__bd"><p>实习生招聘</p></div>'+
+        '</label>'+
+
+        //			'</div>'+
+        //		'</div>'+
+        //		'<div class="weui-flex__item">'+
+        //			'<div class="weui-cells weui-cells_checkbox">'+
+
+        //			'</div>'+
+        //		'</div>'+
+        '</div>'+
+        '</div>';
+    function getOnePosition(){
+
+
+        if ((3) > 1) {
+            showSelect();
+        }else{
+            getOptionValuePosition(2);
+        }
+
+    }
+    function showSelect(){
+        $.modal({
+            title: "请选择职位列表",
+            text: str,
+            buttons: [
+                { text: "取消", className: "defaultP", onClick: function(){} },
+                { text: "确定", onClick: function(){ getOptionValuePosition($('#templatType input[name="checkbox1"]:checked ').val())} }
+            ]
+        });
+
+    }
+    function getOptionValuePosition(type){
+        if(type != null && type != ""){
+            if(type == 2){
+
+
+                var url ="/wt/yonyou/mobweb/v8/position/list?brandCode=1&request_locale=zh_CN";
+
+            }else if(type == 1){
+
+
+                var url ="/wt/yonyou/mobweb/v8/position/list?brandCode=1&recruitType=1&request_locale=zh_CN";
+
+            }else if(type == 12){
+
+
+                var url ="/wt/yonyou/mobweb/v8/position/list?brandCode=1&recruitType=12&request_locale=zh_CN";
+
+            }else if(type == 13){
+
+
+                var url ="/wt/yonyou/mobweb/v8/position/list?brandCode=1&recruitType=13&request_locale=zh_CN";
+
+            }
+            window.location.href = url;
+        }
+    }
+    var choose = '';
+    if(choose && choose != ''){
+        $("#choose"+choose).addClass("choose");
+    }
+</script>
+<script type="text/javascript">
+
+</script>
+
+
+
+
+
+<script type="text/javascript">
+    function toDetailPostUrl(postId,recruitType,currentPage){
+        var postCanApply = 1;
+        var toDetailUrl ='/wt/yonyou/mobweb/v8/position/detail?safe=Y&canBack=true&recruitType='+recruitType+'&postIdsAry='+postId+'&postCanApply='+postCanApply+'&entityPage.currentPage='+currentPage+'';
+        window.location.href=toDetailUrl;
+    }
+
+    $(function(){
+
+        window.addEventListener("popstate", function(e) {
+
+        }, false);
+        function pushHistory() {
+            var state = {
+                title: "title",
+                url: "#"
+            };
+            window.history.pushState(state, "title", "#");
+        }
+    });
+
+    function showCancelApply(applyid){
+        $.modal({
+            title: "提示",
+            text: "确定是否撤回投递",
+            buttons: [
+                { text: "是", className: "default", onClick: function(){doCancelApply(applyid);}},
+                { text: "否", className: "default", onClick: function(){console.log(3)}},
+            ]
+        });
+    }
+
+    function doCancelApply(applyid){
+
+        $("#cancelApplyReason").val("更换职位");
+        $("#cancelApplyId").val(applyid);
+        var url = "/wt/yonyou/web/ICBC/web/index/applyPositionNew!ajaxDoCancelApplyPost?operational=47ec99bc02f942cb8fe1dd407f8dab9ec0108d0e03749209664630009f616b53bf198cb90a03dbcfbdf7bac22b1eb56d3349923d4ca7e2049137012fe8af71b2a0ffef9efc18549c90e3e57728a5d3dd89a75e57b31d48d7c092296b3c0e9836";
+
+        $.ajax({
+            type:"POST",
+            dataType:"text",
+            url:url,
+            data:$("#cancelForm").serialize(),
+            success:function(data){
+                var cToObj=eval("("+data+")");
+                if(cToObj.retCode==0){
+                    showMessage("撤回进行中,稍后刷新状态为撤回成功时,方可重新投递,谢谢!");
+                }else{
+                    showMessage(cToObj.retMsg);
+                }
+                setTimeout("reloadPage()", 1500);
+            }
+        });
+        $(".clz_cancel_info").val("");
+    }
+
+
+    function showMessage(info){
+        $.modal({
+            title: info,
+            buttons: [
+                { text: "确认", className: "default" }
+            ]
+        });
+    }
+
+
+    function reloadPage(){
+        var url = "http://www.hotjob.cn/wt/yonyou/mobweb/v8/security/delivery/listDelivery?brandCode=1&amp;operational=3cb8ecae9c164c0fd08fed5dc0dbff657d8201265e030714688148de9ba5446f0df442f1217e8b7f9b3ba40b1f8ff4ba5aec4cf9544a24ef764e0a7f7f8b9d7390e3e57728a5d3dd89a75e57b31d48d7c092296b3c0e9836";
+        window.location.href = url;
+    }
+
+
+
+    var strCamOrder =   '<style>.weui-dialog__hd{text-align: center;}.weui-dialog__title{font-weight: bold;font-size: 16px;color:#666;}.weui-cell__bd p {color: #999;}.weui-dialog{width: 270px;left: 50%;margin-left: -135px;top: 30%;}.weui-dialog__bd {padding: 0 .6em .8em;}'+
+        '.borderr {border-radius: 5px;overflow: auto;max-height: 120px;min-height:40px;border: 1px solid #eee;width: 249px;}'+
+        '.nolborder {border: 0;width: 104px;float: left;padding: 10px;margin-left: 0;}'+
+        '.borderBottom {border-bottom: 1px solid #eee;}'+
+        '.borderRight {border-right:1px solid #eee;padding-left: 10px;}'+
+        '.borderRight:nth-of-type(even){border-right:0;}'+
+        '.weui-dialog__ft{padding-bottom: 10px;text-align: center;display: block;}.weui-dialog__ft:after{border:0;}'+
+        '.weui-dialog__btn{display: inline-block;width: 90px;height: 26px;line-height: 26px;border: 1px solid #ff6529;margin: 10px 20px 10px 10px;border-radius: 30px;font-size: 14px;background-color: #ff6529;color: #fff;}'+
+        '.weui-dialog .weui-dialog__btn.defaultP{border: 1px solid #d7d7d7;margin: 10px 10px 10px 20px;background-color: #ff6529;color: #6c6c6c;background-color: transparent;}'+
+        '.weui-dialog__btn:after {border-left: 0!important;}.weui-cell:before{border:0;}.nolborder .weui-cell__bd {text-align: left;text-indent: 5px;font-size: 14px;}</style>'+
+        '<div class="borderr" id="templatType">'+
+        '<div class="weui-cells_checkbox">'+
+
+        '<label class="weui-cell weui-check__label nolborder borderBottom borderRight">'+
+        '<div class="weui-cell__hd">'+
+        '<input type="radio" name="checkbox1" class="weui-check"  value="1" />'+
+        '<i class="weui-icon-checked"></i>'+
+        '</div>'+
+        '<div class="weui-cell__bd">'+
+        '<p>第1志愿</p>'+
+        '</div>'+
+        '</label>'+
+
+        '</div>'+
+        '</div>';
+
+    var strAbroadOrder =   '<style>.weui-dialog__hd{text-align: center;}.weui-dialog__title{font-weight: bold;font-size: 16px;color:#666;}.weui-cell__bd p {color: #999;}.weui-dialog{width: 270px;left: 50%;margin-left: -135px;top: 30%;}.weui-dialog__bd {padding: 0 .6em .8em;}'+
+        '.borderr {border-radius: 5px;overflow: auto;max-height: 120px;min-height:40px;border: 1px solid #eee;width: 249px;}'+
+        '.nolborder {border: 0;width: 104px;float: left;padding: 10px;margin-left: 0;}'+
+        '.borderBottom {border-bottom: 1px solid #eee;}'+
+        '.borderRight {border-right:1px solid #eee;padding-left: 10px;}'+
+        '.borderRight:nth-of-type(even){border-right:0;}'+
+        '.weui-dialog__ft{padding-bottom: 10px;text-align: center;display: block;}.weui-dialog__ft:after{border:0;}'+
+        '.weui-dialog__btn{display: inline-block;width: 90px;height: 26px;line-height: 26px;border: 1px solid #ff6529;margin: 10px 20px 10px 10px;border-radius: 30px;font-size: 14px;background-color: #ff6529;color: #fff;}'+
+        '.weui-dialog .weui-dialog__btn.defaultP{border: 1px solid #d7d7d7;margin: 10px 10px 10px 20px;background-color: #ff6529;color: #6c6c6c;background-color: transparent;}'+
+        '.weui-dialog__btn:after {border-left: 0!important;}.weui-cell:before{border:0;}.nolborder .weui-cell__bd {text-align: left;text-indent: 5px;font-size: 14px;}</style>'+
+        '<div class="borderr" id="templatType">'+
+        '<div class="weui-cells_checkbox">'+
+
+        '<label class="weui-cell weui-check__label nolborder borderBottom borderRight">'+
+        '<div class="weui-cell__hd">'+
+        '<input type="radio" name="checkbox1" class="weui-check"  value="1" />'+
+        '<i class="weui-icon-checked"></i>'+
+        '</div>'+
+        '<div class="weui-cell__bd">'+
+        '<p>第1志愿</p>'+
+        '</div>'+
+        '</label>'+
+
+        '</div>'+
+        '</div>';
+
+    function showSelectOrder(oldWishNum,applyId,webApplyId,recruitType){
+        if(recruitType == 1){
+            $.modal({
+                title: "请选择志愿顺序",
+                text: strCamOrder,
+                buttons: [
+                    { text: "取消", className: "defaultP", onClick: function(){ console.log(3)} },
+                    { text: "确定", onClick: function(){ getOptionValue($('#templatType input[name="checkbox1"]:checked ').val(),oldWishNum,applyId,webApplyId)} }
+                ]
+            });
+        }else if(recruitType == 13){
+            $.modal({
+                title: "请选择志愿顺序",
+                text: strAbroadOrder,
+                buttons: [
+                    { text: "取消", className: "defaultP", onClick: function(){ console.log(3)} },
+                    { text: "确定", onClick: function(){ getOptionValue($('#templatType input[name="checkbox1"]:checked ').val(),oldWishNum,applyId,webApplyId)} }
+                ]
+            });
+        }
+
+    }
+
+    function getOptionValue(wishNum,oldWishNum,applyId,webApplyId){
+        if(wishNum != oldWishNum){
+            var url = "/wt/yonyou/mobweb/v8/changeVolunteer";
+            var data = "newVolunteer="+wishNum+"&oldVolunteer="+oldWishNum+"&applyId="+applyId+"&webApplyId="+webApplyId;
+            changeWishNum(wishNum,url,data);
+        }
+    }
+
+    function changeWishNum(wishNum,url,data){
+        $.modal({
+            //title: "提示",
+            title: "确定修改当前简历志愿为"+wishNum+"?",
+            buttons: [
+                { text: "是", className: "", onClick: function(){doChangeWishNum(wishNum,url,data);}},
+                { text: "否", className: "", onClick: function(){console.log(3)}},
+            ]
+        });
+    }
+
+    function doChangeWishNum(wishNum,url,data){
+
+        $.ajax({
+            type:"POST",
+            dataType:"text",
+            url:url,
+            data:data,
+            success:function(msg){
+                if(msg==-1){
+                    showMessage("无法修改志愿，系统已不允许修改志愿或您已经有简历进入流程中。");
+                }else if(msg==1){
+                    showMessage("志愿修改失败。");
+                }else{
+                    showMessage("志愿修改成功！");
+                }
+                setTimeout("reloadPage()", 1500);
+            }
+        });
+    }
+
+</script>
+
+</body></html>

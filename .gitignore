@@ -7,9 +7,9 @@ build/
 target/
 bin/
 dependency-reduced-pom.xml
+.out/
 
 # Eclipse Project Files
-
 .classpath
 .project
 .settings/
